@@ -82,7 +82,7 @@ func (d *Database) GetAllCommentsWithUser() ([]*User, error) {
 		}
 
 		if comment.CommentId != "" {
-			user.Comments = append(user.Comments, *comment)
+			userMap[user.UserId].Comments = append(userMap[user.UserId].Comments, *comment)
 		}
 	}
 

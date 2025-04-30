@@ -48,7 +48,7 @@ func (d *Database) GetAllUsers() ([]User, error) {
 
 	for rows.Next() {
 		var user User
-		if err := rows.Scan(&user.Id, &user.Name); err != nil {
+		if err := rows.Scan(&user.UserId, &user.Name); err != nil {
 			return nil, err
 		}
 		users = append(users, user)
@@ -74,7 +74,7 @@ func (d *Database) GetUserById(id string) (*User, error) {
 
 	user := &User{}
 
-	if err := result.Scan(&user.Id, &user.Name); err != nil {
+	if err := result.Scan(&user.UserId, &user.Name); err != nil {
 		return nil, err
 	}
 

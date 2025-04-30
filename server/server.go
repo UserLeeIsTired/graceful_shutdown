@@ -30,12 +30,12 @@ func NewServer(ctx context.Context, db *database.Database, addr string) {
 		return ShutdownHandler(ctx, next)
 	})
 
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("hi"))
-	})
-
 	r.Route("/users", func(r chi.Router) {
 		handlers.UserRoutes(r, db)
+	})
+
+	r.Route("/comments", func(r chi.Router) {
+		handlers.CommentRoute(r, db)
 	})
 
 	http.ListenAndServe(addr, r)

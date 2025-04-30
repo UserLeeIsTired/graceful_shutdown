@@ -11,13 +11,14 @@ type Database struct {
 }
 
 type User struct {
-	UserId int    `json:"id"`
-	Name   string `json:"name"`
+	UserId   string    `json:"id,omitempty"`
+	Name     string    `json:"name,omitempty"`
+	Comments []Comment `json:"comments,omitempty"`
 }
 
 type Comment struct {
-	CommentId int    `json:"id"`
-	Title     string `json:"title"`
-	Content   string `json:"content"`
-	UserId    string `json:"user_id"`
+	CommentId string `json:"id,omitempty"`
+	Title     string `json:"title,omitempty"`
+	Content   string `json:"content,omitempty"`
+	UserId    string `json:"user_id,omitempty"`
 }

@@ -19,7 +19,7 @@ func UserRoutes(r chi.Router, db *database.Database) {
 		CreateUser(w, r, db)
 	})
 
-	r.Get("/{id}", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/{userId}", func(w http.ResponseWriter, r *http.Request) {
 		GetUserById(w, r, db)
 	})
 }
@@ -36,8 +36,8 @@ func GetAllUsers(w http.ResponseWriter, r *http.Request, db *database.Database) 
 }
 
 func GetUserById(w http.ResponseWriter, r *http.Request, db *database.Database) {
-	id := chi.URLParam(r, "id")
-	user, err := db.GetUserById(id)
+	userId := chi.URLParam(r, "userId")
+	user, err := db.GetUserById(userId)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
